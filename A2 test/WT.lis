@@ -1,0 +1,36 @@
+X-Makina Assembler - Version XM-23 Single Pass+ Assembler - Release 25.05.23
+Input file name: WT.txt
+Time of assembly: Thu 27 Jul 2023 15:25:11 
+  1	    	     	Data1   equ     #0020
+  2	    	     	Data2	equ	#0000
+  3	    	     	org     #2000
+  4	    	     	Start
+  5	2000	6100	movl    Data1,R0
+  6	2002	7800	movh	Data1,R0
+  7	2004	6001	movl    Data2,R1
+  8	2006	7801	movh	Data2,R1
+  9	    	     	Loop
+ 10	2008	C009	STR R1,R1,#0
+ 11	200A	4091	ADD $2,R1
+ 12	200C	4288	SUB $1,R0 ; Counter (R0) = Counter (R0) – 1	; If Counter != 0 Then repeat from Loop
+ 13	200E	27FC	BNZ Loop 		; Execute next instruction if R0 not zero
+ 14	    	     	end     Start
+Successful completion of assembly - 1P
+
+** Symbol table **
+Name                               	Type	Value	Decimal
+Loop                               	REL	2008	8200	PRI
+Start                              	REL	2000	8192	PRI
+Data2                              	CON	0000	0	PRI
+Data1                              	CON	0020	32	PRI
+R7                                 	REG	0007	7	PRI
+R6                                 	REG	0006	6	PRI
+R5                                 	REG	0005	5	PRI
+R4                                 	REG	0004	4	PRI
+R3                                 	REG	0003	3	PRI
+R2                                 	REG	0002	2	PRI
+R1                                 	REG	0001	1	PRI
+R0                                 	REG	0000	0	PRI
+
+.XME file: D:\ECED 3403\Assembler (1)\WT.xme
+

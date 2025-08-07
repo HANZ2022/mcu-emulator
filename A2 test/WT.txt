@@ -1,0 +1,14 @@
+Data1   equ     #0020
+Data2	equ	#0000
+org     #2000
+Start
+movl    Data1,R0
+movh	Data1,R0
+movl    Data2,R1
+movh	Data2,R1
+Loop
+STR R1,R1,#0
+ADD $2,R1
+SUB $1,R0 ; Counter (R0) = Counter (R0) – 1	; If Counter != 0 Then repeat from Loop
+BNZ Loop 		; Execute next instruction if R0 not zero
+end     Start

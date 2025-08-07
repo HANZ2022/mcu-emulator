@@ -1,0 +1,11 @@
+﻿  PSW code.c
+  bus.c
+  cache.c
+  decoder.c
+  main.c
+D:\ECED 3403\A2\Emulator\main.c(71,14): warning C4133: 'function': incompatible types - from 'unsigned short *' to 'word_byte *'
+D:\ECED 3403\A2\Emulator\main.c(152,15): warning C4133: 'function': incompatible types - from 'unsigned short *' to 'word_byte *'
+  Generating Code...
+D:\ECED 3403\A2\Emulator\cache.c(190): warning C4716: 'cache': must return a value
+  LINK : D:\ECED 3403\A2\Emulator\x64\Debug\Emulator.exe not found or not built by the last incremental link; performing full link
+  Emulator.vcxproj -> D:\ECED 3403\A2\Emulator\x64\Debug\Emulator.exe

@@ -1,0 +1,48 @@
+X-Makina Assembler - Version XM-23 Single Pass+ Assembler - Release 25.05.23
+Input file name: WThrough.txt
+Time of assembly: Thu 27 Jul 2023 12:46:13 
+  1	    	     	Data1   equ     #0060
+  2	    	     	Data2	equ	#0000
+  3	    	     	org     #2000
+  4	    	     	Start
+  5	2000	6300	movl    Data1,R0
+  6	2002	7800	movh	Data1,R0
+  7	2004	6001	movl    Data2,R1
+  8	2006	7801	movh	Data2,R1
+  9	    	     	
+ 10	2008	4288	SUB $1,R0 ; Counter (R0) = Counter (R0) – 1
+ 11	200A	4288	SUB $1,R0
+ 12	200C	4288	SUB $1,R0
+ 13	200E	4288	SUB $1,R0
+ 14	2010	4288	SUB $1,R0
+ 15	2012	4288	SUB $1,R0
+ 16	2014	4288	SUB $1,R0
+ 17	2016	4288	SUB $1,R0
+ 18	2018	4288	SUB $1,R0
+ 19	201A	4288	SUB $1,R0
+ 20	201C	4288	SUB $1,R0
+ 21	201E	4288	SUB $1,R0
+ 22	2020	4288	SUB $1,R0
+ 23	2022	4288	SUB $1,R0
+ 24	2024	4288	SUB $1,R0
+ 25	2026	4288	SUB $1,R0
+ 26	    	     	
+ 27	    	     	end     Start
+Successful completion of assembly - 1P
+
+** Symbol table **
+Name                               	Type	Value	Decimal
+Start                              	REL	2000	8192	PRI
+Data2                              	CON	0000	0	PRI
+Data1                              	CON	0060	96	PRI
+R7                                 	REG	0007	7	PRI
+R6                                 	REG	0006	6	PRI
+R5                                 	REG	0005	5	PRI
+R4                                 	REG	0004	4	PRI
+R3                                 	REG	0003	3	PRI
+R2                                 	REG	0002	2	PRI
+R1                                 	REG	0001	1	PRI
+R0                                 	REG	0000	0	PRI
+
+.XME file: D:\ECED 3403\Assembler (1)\WThrough.xme
+
