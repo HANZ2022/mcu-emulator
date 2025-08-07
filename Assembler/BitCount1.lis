@@ -1,0 +1,83 @@
+X-Makina Assembler - Version XM-23 Single Pass+ Assembler - Release 14.04.23
+Input file name: BitCount1.asm
+Time of assembly: Wed 17 May 2023 14:48:15 
+  1	    	     	;
+  2	    	     	; Bit count #1
+  3	    	     	; Count number of bits in word by repeated shifts
+  4	    	     	; Use carry to indicate state of LSBit
+  5	    	     	; ECED 3403
+  6	    	     	; 11 May 2023
+  7	    	     	;
+ 11	    	     	;
+ 12	    	     		org	#1000
+ 13	    	     	Start
+ 14	    	     	;
+ 15	    	     	; Get word with bits to count
+ 16	    	     	; Get address into DataAdr
+ 17	    	     	;
+ 18	1000	6001		movl	Data,DataAdr
+ 19	1002	7901		movh	Data,DataAdr	; R1 <- addr Data
+ 20	    	     	;
+ 21	    	     	; Get value into DataVal
+ 22	    	     	;
+ 23	1004	5809		ld	DataAdr,DataVal	; R1 <- mem[R1]
+ 24	    	     	;
+ 25	    	     	; Count = 0
+ 26	    	     	;
+ 27	1006	6800		movlz	#0,Count
+ 28	    	     	;
+ 29	    	     	; Check bits until value is zero
+ 30	    	     	;
+ 31	1008	4581	BC_Loop	cmp	#0,DataVal
+ 32	100A	2006		beq	Done
+ 33	    	     	;
+ 34	    	     	; Check LSbit for 0
+ 35	    	     	;
+ 36	100C	4981		bit	#0,DataVal
+ 37	100E	2402		bne	NotSet		; Bit is zero
+ 38	    	     	;
+ 39	    	     	; Bit not zero, clear it and add 1 to count
+ 40	    	     	;
+ 41	1010	4A81		bic	#0,DataVal
+ 42	1012	4088		add	#1,Count
+ 43	    	     	;
+ 44	    	     	NotSet
+ 45	1014	4D09		rrc	DataVal		; Rotate DataVal right
+ 46	    	     	;
+ 47	    	     	; Repeat for next bit
+ 48	    	     	;
+ 49	1016	3FF8		bra	BC_Loop
+ 50	    	     	;
+ 51	    	     	; Execute if zero:
+ 52	    	     	;
+ 53	1018	3FFF	Done	bra	Done		; Use breakpoint to catch
+ 54	    	     	;
+ 55	    	     	; Data to be read and counted
+ 56	    	     	;
+ 57	    	     		org	#2000
+ 58	2000	FFFF	Data	word	#FFFF
+ 59	    	     	;
+
+Successful completion of assembly - 2P
+
+** Symbol table **
+Name                               	Type	Value	Decimal
+NotSet                             	REL	1014	4116	PRI
+Done                               	REL	1018	4120	PRI
+BC_Loop                            	REL	1008	4104	PRI
+Data                               	REL	2000	8192	PRI
+Start                              	REL	1000	4096	PRI
+DataAdr                            	REG	0001	1	PRI
+DataVal                            	REG	0001	1	PRI
+Count                              	REG	0000	0	PRI
+R7                                 	REG	0007	7	PRI
+R6                                 	REG	0006	6	PRI
+R5                                 	REG	0005	5	PRI
+R4                                 	REG	0004	4	PRI
+R3                                 	REG	0003	3	PRI
+R2                                 	REG	0002	2	PRI
+R1                                 	REG	0001	1	PRI
+R0                                 	REG	0000	0	PRI
+
+.XME file: D:\ECED 3403\BitCount1.xme
+

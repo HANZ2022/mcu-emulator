@@ -1,0 +1,56 @@
+X-Makina Assembler - Version XM-23 Single Pass+ Assembler - Release 14.04.23
+Input file name: MemCopy2.asm
+Time of assembly: Tue 16 May 2023 22:54:41 
+  1	    	     	;
+  2	    	     	; Copying one memory location to another
+  3	    	     	; Need two registers: address and holding register
+  4	    	     	; Using single address and indexed addressing
+  5	    	     	; ECED 3403
+  6	    	     	; 10 May 23
+  7	    	     	;
+  8	    	     		org	#800		; Start at #0800
+  9	0800	FEDC	InVal	word	#FEDC		; Word initializes 2 bytes to value
+ 10	    	     					; #FEDC in locations #0800 and #0801
+ 11	    	     					; InVal has address #0800
+ 12	0802	0000		bss	#2		; BSS with symbol OutVal (address #0802)
+ 13	    	     					; 2 bytes, locations #0802 and #0803
+ 14	    	     	;
+ 15	    	     		org	#1000		; Start at #1000
+ 16	    	     	;
+ 17	    	     	; R0 <- InVal (Address)
+ 18	    	     	;
+ 19	1000	6000	Main	movl	InVal,R0
+ 20	1002	7840		movh	InVal,R0
+ 21	    	     	;
+ 22	    	     	; R1 <- contents of InVal (R0)
+ 23	    	     	; Indexed addressing
+ 24	    	     	; Increment R0 after load has finished
+ 25	    	     	;
+ 26	1004	5881		ld	R0+,R1		; R1 <- mem[R0]; R0 <- R0 + 2 (#0800 + #0002)
+ 27	    	     	;
+ 28	    	     	; R0 now refers to location #0802 (OutVal)
+ 29	    	     	; Location R0 <- contents of R1
+ 30	    	     	;
+ 31	1006	5C08		st	R1,R0		; mem[R0] <- R1
+ 32	    	     	;
+ 33	    	     	; All done
+ 34	    	     	;
+ 35	    	     		end	Main		; PC <- address of Main on startup
+
+Successful completion of assembly - 1P
+
+** Symbol table **
+Name                               	Type	Value	Decimal
+Main                               	REL	1000	4096	PRI
+InVal                              	REL	0800	2048	PRI
+R7                                 	REG	0007	7	PRI
+R6                                 	REG	0006	6	PRI
+R5                                 	REG	0005	5	PRI
+R4                                 	REG	0004	4	PRI
+R3                                 	REG	0003	3	PRI
+R2                                 	REG	0002	2	PRI
+R1                                 	REG	0001	1	PRI
+R0                                 	REG	0000	0	PRI
+
+.XME file: D:\ECED 3403\MemCopy2.xme
+
